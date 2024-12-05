@@ -2,3 +2,5 @@
 *.o
 *.mod
 *.smod
+*.so
+.vscode
