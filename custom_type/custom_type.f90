@@ -12,9 +12,11 @@ program main
 
    implicit none
 
-   type(Point3D) :: points(10)
+   type(Point3D), allocatable :: points(:), subpoints(:)
    real, allocatable :: xs(:)
    integer :: i
+
+   allocate(points(10))
 
    do i = 1,10
       call random_number(points(i)%x)
@@ -23,13 +25,15 @@ program main
       points(i)%id = i
    end do
 
-   write(*,*) points%x
-   write(*,*) points%id
-
    xs = points%x
-
    print*, "xs = ", xs
 
+   subpoints = points(1:5)
+   xs = subpoints%x
+   print*, "xs = ", xs
+
+   xs = points(1:5)%x
+   print*, "xs = ", xs
 
 contains
 
